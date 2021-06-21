@@ -1,5 +1,20 @@
-This project is Linkedin clone using Reactjs, Redux, Firebase. Its personal project for portfolio.
+This project is Linkedin clone using Reactjs, Redux, Firebase. Its personal project for my portfolio.
 
+## Before start
+
+Create file in path **src/firebaseConfig.js** with the following content. change values with your own firebase config.
+```javascript
+const firebaseConfig = {
+  apiKey: "[apiKey]",
+  authDomain: "[authDomain]",
+  projectId: "[projectId]",
+  storageBucket: "[storageBucket]",
+  messagingSenderId: "[messagingSenderId]",
+  appId: "[appId]",
+};
+
+export default firebaseConfig;
+ ```
 ## Available Scripts
 
 In the project directory, you can run:
