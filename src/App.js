@@ -1,19 +1,19 @@
 import React from "react";
-import Feed from "./components/Feed";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+import { Switch, Route, Redirect } from "react-router-dom";
+import FeedPage from "./pages/Feed";
 import styles from "./App.module.css";
 
 function App() {
   return (
     <div className={styles.app}>
-      <Header />
-      <main className={styles.main}>
-        <Sidebar />
-        <Feed />
-        {/* 
-        <Widgets /> */}
-      </main>
+      <Switch>
+        <Route path="/feed">
+          <FeedPage />
+        </Route>
+        <Route path="*">
+          <Redirect to="/feed" />
+        </Route>
+      </Switch>
     </div>
   );
 }
