@@ -1,7 +1,8 @@
 import React from "react";
-import styles from "./App.module.css";
+import Feed from "./components/Feed";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import styles from "./App.module.css";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <Header />
       <main className={styles.main}>
         <Sidebar />
-        {/* <Feed />
+        <Feed />
+        {/* 
         <Widgets /> */}
       </main>
     </div>
