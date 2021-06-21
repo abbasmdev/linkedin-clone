@@ -5,6 +5,7 @@ import {
   Event as EventIcon,
   Description as DescriptionIcon,
 } from "@material-ui/icons";
+import { useState } from "react";
 import styles from "./index.module.css";
 
 const FormOption = ({ Icon, label, color = "red" }) => {
@@ -15,16 +16,24 @@ const FormOption = ({ Icon, label, color = "red" }) => {
     </div>
   );
 };
-const PostForm = () => {
+const PostForm = ({ onFormSubmit }) => {
+  const [message, setMessage] = useState("");
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    if (message.length < 1) return;
+    onFormSubmit({ message });
+    setMessage("");
   };
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
         <CreateIcon />
         <form onSubmit={formSubmitHandler}>
-          <input type="text" />
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
           <button type="submit" hidden={true}>
             Send
           </button>
