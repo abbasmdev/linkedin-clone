@@ -1,31 +1,48 @@
+import { useEffect, useState } from "react";
+import firebase from "firebase";
+import { db as firebaseDb } from "../../firebase";
 import PostForm from "./PostForm";
 import styles from "./index.module.css";
 import PostItem from "./PostItem";
-import { useState } from "react";
 const Feed = () => {
   const [posts, setPosts] = useState([]);
 
   const formSubmitHandler = ({ message }) => {
-    alert(message);
+    firebaseDb.collection("posts").add({
+      name: "Abbas Moharami",
+      description: "test desc",
+      message,
+      photoUrl: "",
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
   };
+
+  useEffect(() => {
+    firebaseDb
+      .collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        const mapedData = snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            data: doc.data(),
+          };
+        });
+        setPosts(mapedData);
+      });
+  }, []);
   return (
     <div className={styles.feed}>
       <PostForm onFormSubmit={formSubmitHandler} />
-      <PostItem
-        name="Abbas Moharami"
-        description="Test desc"
-        message="Test message"
-      />
-      <PostItem
-        name="Abbas Moharami"
-        description="Test desc"
-        message="Test messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest messageTest message"
-      />
-      <PostItem
-        name="Abbas Moharami"
-        description="Test desc"
-        message="Test message"
-      />
+      {posts.map((post) => (
+        <PostItem
+          key={post.id}
+          name={post.data.name}
+          description={post.data.description}
+          message={post.data.message}
+          photoUrl={post.data.photoUrl}
+        />
+      ))}
     </div>
   );
 };
