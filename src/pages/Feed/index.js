@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import styles from "./index.module.css";
 import FeedComponent from "../../components/Feed";
+import Widgets from "../../components/Widgets";
 function Feed() {
   return (
     <React.Fragment>
@@ -10,8 +11,8 @@ function Feed() {
       <main className={styles.main}>
         <Sidebar />
         <FeedComponent />
-        {/* 
-        <Widgets /> */}
+
+        <Widgets />
       </main>
     </React.Fragment>
   );
