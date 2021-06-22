@@ -1,7 +1,10 @@
 import { Avatar } from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { selectAuthUser } from "../../store/authSlice";
 import styles from "./index.module.css";
 import SidebarItem from "./SidebarItem";
 const Sidebar = () => {
+  const authUser = useSelector(selectAuthUser);
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebarTop}>
@@ -10,9 +13,12 @@ const Sidebar = () => {
           src="https://static-exp1.licdn.com/sc/h/9e0ckeb27mzi70ne80f4hv7il"
           alt=""
         />
-        <Avatar className={styles.siebarAvatar} />
-        <h2>Abbas Moharami</h2>
-        <h4>abbasmdev@gmail.com</h4>
+        <Avatar
+          className={styles.siebarAvatar}
+          src={authUser?.photoURL || ""}
+        />
+        <h2>{authUser?.displayName}</h2>
+        <h4>{authUser?.email}</h4>
       </div>
       <div className={styles.sidebarStats}>
         <div className={styles.sidebarStat}>
