@@ -5,8 +5,8 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import ChatIcon from "@material-ui/icons/Chat";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import HeaderOption from "./HeaderOption";
-import styles from "./index.module.css";
 import Avatar from "./Avatar";
+import styles from "./index.module.css";
 const Header = () => {
   return (
     <header className={styles.header}>
@@ -22,11 +22,31 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.headerRight}>
-        <HeaderOption label="Home" Icon={HomeIcon} />
-        <HeaderOption label="My Network" Icon={SupervisorAccountIcon} />
-        <HeaderOption label="Jobs" Icon={BusinessCenterIcon} />
-        <HeaderOption label="Messaging" Icon={ChatIcon} />
-        <HeaderOption label="Notifications" Icon={NotificationsIcon} />
+        <HeaderOption
+          className={styles.headerOption}
+          label="Home"
+          Icon={HomeIcon}
+        />
+        <HeaderOption
+          className={styles.headerOption}
+          label="My Network"
+          Icon={SupervisorAccountIcon}
+        />
+        <HeaderOption
+          className={styles.headerOption}
+          label="Jobs"
+          Icon={BusinessCenterIcon}
+        />
+        <HeaderOption
+          className={styles.headerOption}
+          label="Messaging"
+          Icon={ChatIcon}
+        />
+        <HeaderOption
+          className={styles.headerOption}
+          label="Notifications"
+          Icon={NotificationsIcon}
+        />
         <Avatar
           label="me"
           src="https://avatars.githubusercontent.com/u/26652092?v=4"

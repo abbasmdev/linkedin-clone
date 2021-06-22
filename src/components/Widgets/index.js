@@ -2,9 +2,9 @@ import { Info as InfoIcon } from "@material-ui/icons";
 import styles from "./index.module.css";
 import NewsArticle from "./NewsArticle";
 
-const Widgets = () => {
+const Widgets = ({ className }) => {
   return (
-    <div className={styles.widgets}>
+    <div className={`${styles.widgets} ${className}`}>
       <div className={styles.header}>
         <h2>Linkedin News</h2>
         <InfoIcon />

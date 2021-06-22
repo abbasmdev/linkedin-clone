@@ -1,12 +1,12 @@
 import { Avatar } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { selectAuthUser } from "../../store/authSlice";
-import styles from "./index.module.css";
 import SidebarItem from "./SidebarItem";
-const Sidebar = () => {
+import styles from "./index.module.css";
+const Sidebar = ({ className }) => {
   const authUser = useSelector(selectAuthUser);
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${className}`}>
       <div className={styles.sidebarTop}>
         <img
           className={styles.sidebarTopBackImg}

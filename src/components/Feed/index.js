@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import firebase from "firebase";
 import { db as firebaseDb } from "../../firebase";
 import PostForm from "./PostForm";
-import styles from "./index.module.css";
 import PostItem from "./PostItem";
 import { useSelector } from "react-redux";
 import { selectAuthUser } from "../../store/authSlice";
-const Feed = () => {
+import styles from "./index.module.css";
+const Feed = ({ className }) => {
   const authUser = useSelector(selectAuthUser);
   const [posts, setPosts] = useState([]);
 
@@ -35,7 +35,7 @@ const Feed = () => {
       });
   }, []);
   return (
-    <div className={styles.feed}>
+    <div className={`${styles.feed} ${className}`}>
       <PostForm onFormSubmit={formSubmitHandler} />
       {posts.map((post) => (
         <PostItem
