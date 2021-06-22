@@ -31,6 +31,7 @@ const PostForm = ({ onFormSubmit }) => {
         <form onSubmit={formSubmitHandler}>
           <input
             type="text"
+            placeholder="Write your text and press Enter key"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
