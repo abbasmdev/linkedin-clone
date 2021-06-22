@@ -4,15 +4,18 @@ import { db as firebaseDb } from "../../firebase";
 import PostForm from "./PostForm";
 import styles from "./index.module.css";
 import PostItem from "./PostItem";
+import { useSelector } from "react-redux";
+import { selectAuthUser } from "../../store/authSlice";
 const Feed = () => {
+  const authUser = useSelector(selectAuthUser);
   const [posts, setPosts] = useState([]);
 
   const formSubmitHandler = ({ message }) => {
     firebaseDb.collection("posts").add({
-      name: "Abbas Moharami",
-      description: "test desc",
+      name: authUser.displayName,
+      description: authUser.email,
       message,
-      photoUrl: "",
+      photoUrl: authUser.photoURL || "",
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
   };

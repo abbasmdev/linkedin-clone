@@ -19,7 +19,7 @@ const PostItem = ({ name, description, message, photoUrl }) => {
   return (
     <div className={styles.postItem}>
       <div className={styles.header}>
-        <Avatar />
+        <Avatar src={photoUrl || ""} />
         <div className={styles.info}>
           <h3>{name}</h3>
           <p>{description}</p>
