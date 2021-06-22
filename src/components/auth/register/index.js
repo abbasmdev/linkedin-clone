@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { auth as firebaseAuth } from "../../../firebase";
 import Button from "../../Button";
 import Input from "../../Input";
 import styles from "./index.module.css";
@@ -36,7 +37,15 @@ const Register = () => {
       alert("Full name is less than 3 and/or profile link url invalid.");
       return;
     }
-    alert("submit");
+    firebaseAuth
+      .createUserWithEmailAndPassword(dEmail, dPassword)
+      .then((user) => {
+        user.user.updateProfile({
+          displayName: dFullName,
+          photoURL: dProfilePicUrl,
+        });
+      })
+      .catch((e) => alert(e.message));
   };
 
   const signInClickHandler = () => {

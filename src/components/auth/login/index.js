@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { auth } from "../../../firebase";
 import Button from "../../Button";
 import Input from "../../Input";
 import styles from "./index.module.css";
@@ -23,7 +24,10 @@ const Login = () => {
       alert("Email not valid or password length less than 6");
       return;
     }
-    alert("submit");
+    auth
+      .signInWithEmailAndPassword(dEmail, dPassword)
+      .then((u) => {})
+      .catch((e) => alert(e.message));
   };
 
   const joinNowClickHandler = () => {

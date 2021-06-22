@@ -15,6 +15,7 @@ function App() {
     firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         dispatch(authActions.login(user));
+        hisotry.replace("/feed");
       } else {
         dispatch(authActions.logout());
         hisotry.replace("/auth/login");
